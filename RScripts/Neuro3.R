@@ -1,0 +1,16 @@
+setwd("/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113")
+mridir<-"/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113"
+T1 <- readNIfTI(file.path(mridir, "/SUBJ0001-01-MPRAGE.nii.gz"))
+T1 <- readNIfTI("/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113/113-01-MPRAGE.nii.gz")
+orthographic(T1)
+mask_T1<-readNIfTI("/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113/113-01-MPRAGE.nii.gz", reorient = FALSE)
+orthographic(mask_T1)
+Ta <- readNIfTI("/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113/113-01-FLAIR.nii.gz")
+orthographic(Ta)
+Ta <- readNIfTI("/Users/home/Downloads/BTech DS/NeuroHacking/Neurohacking_data-0.0/kirby21/visit_1/113/113-01-FLAIR.nii.gz", reorient = FALSE)
+orthographic(Ta)
+par(mfrow=c(1,1))
+im_hist = hist(T1, plot=FALSE)
+coll = rgb(0,0,1,1/2)
+plot(im_hist$mids, im_hist$counts, log= "y", type = "h", lwd = 10, lend = 2, col= coll, 
+     xlab = "Intensity Values", ylab = "Count(Log scale)")
